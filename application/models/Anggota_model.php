@@ -30,6 +30,7 @@ class Anggota_model extends CI_Model
                 $this->session->set_userdata(['user_logged' => $user]);
                 $this->session->set_userdata(['role' => 'Anggota']);
                 $this->session->set_userdata(['nama' => $user->nama]);
+                $this->session->set_userdata(['profile' => $user->profile]);
                 return true;
             }
 
@@ -69,7 +70,9 @@ class Anggota_model extends CI_Model
         $this->email = $post["email"];
         $this->password = $post["password"];
         $this->notelp = $post["notelp"];
+        $this->profile = $this->do_upload();
         return $this->db->insert($this->_table, $this);
+        // return var_dump($this->profile);
     }
 
     public function update()
@@ -84,7 +87,7 @@ class Anggota_model extends CI_Model
         $this->password = $post["password"];
         $this->notelp = $post["notelp"];
          if (!empty($_FILES["profile"]["name"])) {
-            $this->profile = $this->_uploadImage();
+            $this->profile = $this->do_upload();
         } else {
             $this->profile = $post["old_profile"];
         }
@@ -96,7 +99,7 @@ class Anggota_model extends CI_Model
         return $this->db->delete($this->_table, array("nra" => $nra));
     }
     
-     private function _uploadImage()
+     private function do_upload()
     {
         $config['upload_path']          = './anggota/';
 		$config['allowed_types']        = 'jpg|png|jpeg';
@@ -107,8 +110,10 @@ class Anggota_model extends CI_Model
 
     if ($this->upload->do_upload('profile')) {
         return $this->upload->data("file_name");
-    }
-    return $this->db->error(); 
+    } 
+    $error = array('error' => $this->upload->display_errors());
+        print_r($error);
+        exit;
     }
 
     public function logout()

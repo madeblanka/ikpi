@@ -24,7 +24,7 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">Register</p>
 
-      <form action="<?= site_url('anggota/registeraction')?>" method="post">
+      <form action="<?= site_url('anggota/registeraction')?>" method="post" enctype='multipart/form-data'>
         <div class="input-group mb-3">
           <input type="number" class="form-control" name="nra" placeholder="NRA">
           <div class="input-group-append">
@@ -99,12 +99,12 @@
             </div>
           </div>
         </div>
-        <!-- <div class="input-group mb-3"> 
+        <div class="input-group mb-3"> 
           <label for="potoprofile">Poto Profile</label>
         </div>
         <div class="input-group mb-3">
             <input type="file" name="profile">
-        </div> -->
+        </div>
         <div class="row">
           </div>
           <!-- /.col -->
