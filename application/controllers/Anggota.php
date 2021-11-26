@@ -5,8 +5,10 @@ class Anggota extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+		$this->load->helper('auth_helper');
         $this->load->model("Anggota_model","anggota");
         $this->load->model("Peraturan_model","peraturan");
+		$this->load->model("Postingan_model", "postingan");
 	}
 
 	public function index()
@@ -154,5 +156,81 @@ class Anggota extends CI_Controller {
                 </script>";
             }
         }
+	}
+
+	public function postingan()
+	{
+		is_logged_in();
+		$data['postingan'] = $this->postingan->terbaruArray();
+		$this->load->view('admin/postingan/index', $data);
+	}
+
+	public function tambahpostingan()
+	{
+		is_logged_in();
+		$this->load->view('admin/postingan/tambah');
+	}
+
+	public function addpostingan()
+	{
+		is_logged_in();
+		if ($this->input->post()) {
+			if ($this->postingan->save()) {
+				echo "<script>
+				alert('Postingan Baru Telah Ditambahkan!');
+				window.location.href='postingan';
+				</script>";
+			} else {
+				echo "<script>
+                alert('Gagal Menambahkan Postingan! Silahkan Hubungi Admin);
+                window.location.href='tambahpostingan';
+                </script>";
+			}
+		}
+	}
+
+	public function editpostingan($id_postingan)
+	{
+		is_logged_in();
+		$data['postingan'] = $this->postingan->getbyId($id_postingan);
+		$this->load->view('admin/postingan/edit', $data);
+	}
+
+	public function updatepostingan($id_postingan = null)
+	{
+		is_logged_in();
+		if ($this->input->post()) {
+			if ($this->postingan->update($id_postingan)) {
+				echo "<script>
+				alert('Postingan Telah Diperbaharui!');
+				window.location.href='postingan';
+				</script>";
+			} else {
+				echo "<script>
+                alert('Gagal Memperbaharui Postingan! Silahkan Hubungi Admin);
+                window.location.href='editpostingan';
+                </script>";
+			}
+		}
+	}
+
+	public function deletepostingan($id_postingan)
+	{
+		is_logged_in();
+		$old_data = $this->db->get_where('postingan', ["id_postingan" => $id_postingan])->row_array();
+		for ($i = 0; $i < 15; $i++) {
+			$j = $i + 1;
+			$temp_gambar = 'gambar' . $j;
+			$old_image = $old_data[$temp_gambar];
+			if ($old_image) {
+				unlink(FCPATH . './postingan/' . $old_image);
+			}
+		}
+		$this->db->delete('postingan', ['id_postingan' => $id_postingan]);
+		echo "<script>
+					alert('Postingan Telah Dihapus!');
+					window.location.href='postingan';
+					</script>";
+		redirect('anggota/postingan');
 	}
 }

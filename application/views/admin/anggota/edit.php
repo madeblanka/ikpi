@@ -70,13 +70,13 @@
                     <input type="text" name="notelp" class="form-control" id="exampleInputPassword1" value="<?= $a->notelp?>">
                   </div>
 
-                  <!-- <div class="form-group">
+                  <div class="form-group">
                     <label for="exampleInputFile">File input</label>
                     <div class="input-group">
                         <input type="file" name="file">
                         <input type="hidden" value="<?= $p->file?>" name="old_file">
                     </div>
-                  </div> -->
+                  </div>
                 </div>
                 <!-- /.card-body -->
 

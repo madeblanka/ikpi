@@ -5,7 +5,7 @@
   <section id="hero" class="d-flex align-items-center">
     <div class="container" data-aos="zoom-out" data-aos-delay="100">
       <h1>Welcome to <span>IKPI Bali</span></h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
+      <h2>Ikatan Konsultan Pajak Indonesia Cabang Bali</h2>
       <div class="d-flex">
         <a href="<?php echo site_url('anggota/login')?>" class="btn-get-started scrollto">Login</a>
         <!-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> -->
@@ -14,7 +14,7 @@
   </section><!-- End Hero -->
 
    <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
+    <!-- <section id="featured-services" class="featured-services">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
@@ -53,10 +53,10 @@
         </div>
 
       </div>
-    </section><!-- End Featured Services Section -->
+    </section> -->
     
     <!-- ======= About Section ======= -->
-    <section id="about" class="about section-bg">
+    <!-- <section id="about" class="about section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -100,7 +100,7 @@
         </div>
 
       </div>
-    </section><!-- End About Section -->
+    </section> -->
 
     
     <!-- ======= Services Section ======= -->
@@ -108,67 +108,29 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <h3>Check our <span>Services</span></h3>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
+          <h2>Postingan</h2>
+          <h3>Check our <span>Postingan</span></h3>
+          <p>Berikut adalah Beberapa Postingan Terbaru dari IKPI Cabang Bali</p>
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+          <?php foreach($postingan as $p):?>
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <a href="<?= site_url('front/detailpostingan/'.$p->id_postingan)?>"><img class="img-fluid" src="<?= base_url('postingan/'.$p->gambar1)?>" alt=""></a>
+              <h4><a href="<?= site_url('front/detailpostingan/'.$p->id_postingan)?>"><?= $p->nama?></a></h4>
+              <p align="left"><?php echo substr($p->keterangan,0,120)?>...
+            <a href="<?= site_url('front/detailpostingan/'.$p->id_postingan)?>"><br>Lihat Lebih Lanjut</a></p>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Sed ut perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-slideshow"></i></div>
-              <h4><a href="">Dele cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">Divera don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div>
-
+          <?php endforeach?>
         </div>
 
       </div>
     </section><!-- End Services Section -->
 
     <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
+    <!-- <section id="testimonials" class="testimonials">
       <div class="container" data-aos="zoom-in">
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
@@ -185,7 +147,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <div class="swiper-slide">
               <div class="testimonial-item">
@@ -198,7 +160,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <div class="swiper-slide">
               <div class="testimonial-item">
@@ -211,7 +173,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <div class="swiper-slide">
               <div class="testimonial-item">
@@ -224,7 +186,7 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
             <div class="swiper-slide">
               <div class="testimonial-item">
@@ -237,17 +199,17 @@
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
+            </div>
 
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
-    </section><!-- End Testimonials Section -->
+    </section> -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
+    <!-- <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -333,5 +295,5 @@
         </div>
 
       </div>
-    </section><!-- End Team Section -->
+    </section> -->
 <?php $this->load->view('front/_partials/footer')?>

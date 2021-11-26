@@ -30,6 +30,7 @@ class Anggota_model extends CI_Model
                 $this->session->set_userdata(['user_logged' => $user]);
                 $this->session->set_userdata(['role' => 'Anggota']);
                 $this->session->set_userdata(['nama' => $user->nama]);
+                $this->session->set_userdata(['nra' => $user->nra]);
                 $this->session->set_userdata(['profile' => $user->profile]);
                 return true;
             }
@@ -72,7 +73,6 @@ class Anggota_model extends CI_Model
         $this->notelp = $post["notelp"];
         $this->profile = $this->do_upload();
         return $this->db->insert($this->_table, $this);
-        // return var_dump($this->profile);
     }
 
     public function update()
@@ -110,7 +110,7 @@ class Anggota_model extends CI_Model
 
     if ($this->upload->do_upload('profile')) {
         return $this->upload->data("file_name");
-    } 
+    }
     $error = array('error' => $this->upload->display_errors());
         print_r($error);
         exit;
