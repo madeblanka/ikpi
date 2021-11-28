@@ -30,6 +30,15 @@ class Peraturan_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->order_by('created_at','DESC');
+        $this->db->limit(5);
+        return $this->db->get($this->_table)->result();
+    }
+    
+    public function get5()
+    {
+        $this->db->select('*');
+        $this->db->order_by('created_at','DESC');
+        $this->db->limit(5);
         return $this->db->get($this->_table)->result();
     }
 

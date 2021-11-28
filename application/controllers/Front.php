@@ -7,10 +7,14 @@ class Front extends CI_Controller {
     {
         parent::__construct();
         $this->load->model("Postingan_model","postingan");
+        $this->load->model("Peraturan_model","peraturan");
+        $this->load->model("Anggota_Model","anggota");
 	}
 	public function index()
 	{
 		$data['postingan']= $this->postingan->getAll();
+		$data['peraturan']= $this->peraturan->get5();
+		$data['anggota']= $this->anggota->terbaru5();
 		$this->load->view('front/index',$data);
 	}
 

@@ -8,8 +8,8 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">Beranda</a></li>
           <li><a class="nav-link scrollto" href="#services">Postingan</a></li>
           <li><a class="nav-link scrollto" href="<?= site_url('anggota/login')?>">Login</a></li>
         </ul>

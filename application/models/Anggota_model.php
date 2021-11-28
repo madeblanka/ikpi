@@ -12,6 +12,9 @@ class Anggota_model extends CI_Model
     public $email;
     public $password;
     public $notelp;
+    public $profile;
+    public $created_at;
+    public $updated_at;
   
     public function doLogin(){
 		$post = $this->input->post();
@@ -48,7 +51,15 @@ class Anggota_model extends CI_Model
     {
         return $this->db->get($this->_table)->result();
     }
-    
+
+    public function terbaru5()
+    {
+        $this->db->select('*');
+        $this->db->order_by('created_at','DESC');
+        $this->db->limit(5);
+        return $this->db->get($this->_table)->result();
+    }
+
     public function getByIdresult($nra)
     {
         return $this->db->get_where($this->_table, ["nra" => $nra])->result();
@@ -72,6 +83,8 @@ class Anggota_model extends CI_Model
         $this->password = $post["password"];
         $this->notelp = $post["notelp"];
         $this->profile = $this->do_upload();
+        $this->created_at = date('Y-m-d H:i:s');
+        $this->updated_at = '';
         return $this->db->insert($this->_table, $this);
     }
 
@@ -91,6 +104,7 @@ class Anggota_model extends CI_Model
         } else {
             $this->profile = $post["old_profile"];
         }
+        $this->updated_at = date('Y-m-d H:i:s');
         return $this->db->update($this->_table, $this, array('nra' => $post['nra']));
     }
 
