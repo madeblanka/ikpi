@@ -21,11 +21,24 @@ class Front extends CI_Controller {
 	public function postingan()
 	{
 		$data['postingan']= $this->postingan->getAll();
-		$this->load->view('front/postingan',$data);
+		$this->load->view('front/postingan/postingan',$data);
 	}
+	
+	public function postinganlist()
+	{
+		$data['postingan']= $this->postingan->getAll();
+		$this->load->view('front/postingan/list',$data);
+	}
+
 	public function detailpostingan($id_postingan)
 	{
 		$data['postingan']= $this->postingan->getById($id_postingan);
-		$this->load->view('front/detailpostingan',$data);
+		$this->load->view('front/postingan/detailpostingan',$data);
+	}
+
+	public function peraturanlist()
+	{
+		$data['postingan'] = $this->peraturan->getAll();
+		$this->load->view('front/peraturan/list',$data);
 	}
 }

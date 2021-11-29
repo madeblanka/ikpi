@@ -18,81 +18,30 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <h3>Beranda <span> IKPI Bali</span></h3>
+        <h3>POSTINGAN <span> IKPI Bali</span></h3>
         <p><br></p>
       </div>
 
       <div class="row">
-        <div class="col-lg-3">
-          <h3>INFO PERATURAN</h3>
+        <div class="col">
+          <h3>List Postingan</h3>
           <div class="card text-center shadow">
             <ul class="list-group list-group-flush">
-              <?php foreach($peraturan as $p):?>
+              <?php foreach($postingan as $p):?>
               <li class="list-group-item" style="text-align:left;">
                 <div class="row">
                   <div class="col-9" style="font-size: 13px;">
-                    Peraturan - <strong><a href="<?= site_url('front/peraturandetail/'.$p->id_peraturan)?>"><?= $p->nama?></a></strong>
+                    <strong><a href="<?= site_url('front/postingandetail/'.$p->id_postingan)?>"><?= $p->nama?></a></strong>
                   </div>
                   <div class="col-3 text-muted" style="font-size: 12px; ">
-                    <i><?= date('d-M-Y H:i',strtotime($p->created_at))?></i>
+                    <i>Tanggal : <?= date('d-M-Y H:i',strtotime($p->created_at))?></i>
                   </div>
                 </div>
               </li>
               <?php endforeach?>
             </ul>
-            <div class="card-footer text-white py-3" style="font-size: 14px; text-align: right;">
-              <strong><a href="<?= site_url('front/peraturanlist/')?>">Lihat Semua</a></strong>
-            </div>
           </div>
         </div>
-
-        <div class="col-lg-6">
-          <h3>ARTIKEL DAN BERITA</h3>
-          <table class="table table-bordered bg-white shadow" style="margin:0;">
-            <tbody>
-              <tr>
-                <?php foreach($postingan as $p):?>
-                <td>
-                  <img src="<?= base_url('postingan/'.$p->gambar1) ?>" class="img-fluid" alt="" width="200px">
-                  <p class="text-muted" style="font-size: 12px; margin:0;">
-                    <i><?= date('d-M-Y H:i',strtotime($p->created_at))?></i>
-                  </p>
-                  <p style="font-size: 12px; margin:0;">
-                    <strong><a href="<?= site_url('front/postingandetail/'.$p->id_postingan)?>"> <?= $p->nama?> </a> </strong>
-                  </p>
-                </td>
-                <?php endforeach?>
-              </tr>
-            </tbody>
-          </table>
-          <div class="card-footer text-white py-3" style="font-size: 14px; text-align: right;">
-            <strong><a href="<?= site_url('front/postinganlist/')?>">Lihat Semua</a></strong>
-          </div>
-        </div>
-
-        <div class="col-lg-3">
-          <h3>INFO ANGGOTA BARU</h3>
-          <div class="card text-center shadow">
-            <ul class="list-group list-group-flush">
-              <?php foreach($anggota as $a):?>
-              <li class="list-group-item" style="text-align:left;">
-                <div class="row">
-                  <div class="col-9" style="font-size: 13px;">
-                    Nama : <strong><a href="<?= site_url('front/anggotadetail/'.$a->nra)?>"><?= $a->nama?></a></strong>
-                  </div>
-                  <div class="col-3 text-muted" style="font-size: 12px; ">
-                    <i><?= date('d-M-Y H:i',strtotime($a->created_at))?></i>
-                  </div>
-                </div>
-              </li>
-              <?php endforeach?>
-            </ul>
-            <div class="card-footer text-white py-3" style="font-size: 14px; text-align: right;">
-              <strong><a href="<?= site_url('front/anggotalist')?>">Lihat Semua</a></strong>
-            </div>
-          </div>
-        </div>
-      </div>
 
     </div>
   </section>

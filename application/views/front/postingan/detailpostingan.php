@@ -46,10 +46,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto " href="#">Home</a></li>
-          <li><a class="nav-link scrollto" href="#">About</a></li>
-          <li><a class="nav-link scrollto active" href="#">Postingan</a></li>
-          <li><a class="nav-link scrollto" href="#">Contact</a></li>
+          <li><a class="nav-link scrollto" href="<?= site_url('front/')?>">Home</a></li>
+          <li><a class="nav-link scrollto" href="<?= site_url('front/')?>">Beranda</a></li>
+          <li><a class="nav-link scrollto" href="<?= site_url('front/')?>">Postingan</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
